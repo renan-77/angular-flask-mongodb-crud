@@ -1,0 +1,14 @@
+.top-container{
+    height: 8%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    background-color: #003099;
+    color: #E3B11B;
+    text-align: right;
+}
+
+.content{
+    margin-top: 1em;
+    margin-right: 1em;
+}
