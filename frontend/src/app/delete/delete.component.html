@@ -11,6 +11,7 @@
 </div>
 <div class="container bottom-container">
     <div class="bottom-content">
+    <pre *ngIf="result$"> {{(result$|async)|json}} </pre>
     </div>
 </div>
 </body>
