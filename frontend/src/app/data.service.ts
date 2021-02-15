@@ -8,7 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 
 export class DataService {
-    private readonly url: string = 'http://localhost:5000/api';
+    private readonly url: string = 'http://localhost:5000/person';
 
   constructor(private http: HttpClient) { }
 

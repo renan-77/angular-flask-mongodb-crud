@@ -12,4 +12,10 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+    confirmDeletion(name: string): void {
+        if (confirm('Are you sure to delete ' + name)) {
+            console.log('Implement delete functionality here');
+        }
+    }
+
 }
