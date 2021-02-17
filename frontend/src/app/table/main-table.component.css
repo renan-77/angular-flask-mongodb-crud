@@ -1,0 +1,20 @@
+table{
+    width: 100%;
+}
+.button-add{
+    height: 4em;
+    width: 4em;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    text-align: center;
+    right: 1%;
+    bottom: 1%;
+    background-color: #003099;
+}
+
+.in-button-add{
+    color: #f1f1f1;
+    font-size: 2.3em;
+    text-decoration: none;
+}

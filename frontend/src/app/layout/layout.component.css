@@ -67,20 +67,11 @@
     background-color: #74b9ff;
 }
 
-.button-add{
-    height: 4em;
-    width: 4em;
-    border-radius: 50%;
-    display: block;
-    position: absolute;
-    text-align: center;
-    left: 0%;
-    transform: translateY(+70%) translateX(+20%);
-    background-color: #003099;
+h1{
+    text-decoration: none;
+    color: #f1f1f1;
 }
 
-.in-button-add{
-    color: #f1f1f1;
-    font-size: 2em;
+a{
     text-decoration: none;
 }
