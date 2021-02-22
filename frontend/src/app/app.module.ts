@@ -9,9 +9,10 @@ import { CardComponent } from './card/card.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './data.service';
-import { FullscreenComponent } from './fullscreen/fullscreen.component';
 import { MainTableComponent } from './table/main-table.component';
 import { AddComponent } from './add/add.component';
+import { SafePipe } from './safe.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -19,15 +20,16 @@ import { AddComponent } from './add/add.component';
         LayoutComponent,
         EditComponent,
         CardComponent,
-        FullscreenComponent,
         MainTableComponent,
         AddComponent,
+        SafePipe
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
         AppRoutingModule,
-        MatTableModule
+        MatTableModule,
+        ReactiveFormsModule
     ],
     providers: [
         DataService

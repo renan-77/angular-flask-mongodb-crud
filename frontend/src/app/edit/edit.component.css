@@ -14,7 +14,7 @@
 .bottom-container{
     height: 92%;
     width: 100%;
-    position: absolute;
+    position: relative;
     left: 0;
     text-align: justify;
 }

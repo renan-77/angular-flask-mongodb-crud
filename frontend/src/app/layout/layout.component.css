@@ -75,3 +75,7 @@ h1{
 a{
     text-decoration: none;
 }
+
+.pageTitle {
+    font-size: 1.6vw !important;
+}

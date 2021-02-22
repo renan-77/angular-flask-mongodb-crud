@@ -8,7 +8,7 @@ import {catchError, map} from 'rxjs/operators';
 })
 
 export class DataService {
-    private readonly url: string = 'http://localhost:5000/person';
+    private readonly url: string = 'http://localhost:5000/person/';
 
     constructor(private http: HttpClient) {
     }
@@ -16,4 +16,34 @@ export class DataService {
     fetchData(): Observable<any> {
         return this.http.get(this.url);
     }
+
+    fetchPerson(id: string): Observable<any>{
+        const endPoints = `${id}`;
+        console.log(this.url + endPoints);
+        return this.http.get(this.url + endPoints);
+    }
+
+    deletePerson(id: string): void{
+        const endPoints = `${id}`;
+        console.log(this.url + endPoints);
+        this.http.delete(this.url + endPoints).subscribe(data => {
+            console.log('Successfully Delete ' + data);
+        });
+    }
+
+    postPerson(person): void{
+        console.log('In Person Post');
+        this.http.post(this.url, person).subscribe(data => {
+            console.log('Posted');
+        });
+    }
+
+    updatePerson(person): void{
+        const endPoints = `${person.id}`;
+        console.log('In Person Post');
+        this.http.put(this.url + endPoints, person).subscribe(data => {
+            console.log('Posted');
+        });
+    }
+
 }
