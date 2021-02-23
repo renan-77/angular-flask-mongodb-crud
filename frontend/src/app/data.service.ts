@@ -39,8 +39,9 @@ export class DataService {
     }
 
     updatePerson(person): void{
-        const endPoints = `${person.id}`;
+        const endPoints = `${person._id}`;
         console.log('In Person Post');
+        console.log(person);
         this.http.put(this.url + endPoints, person).subscribe(data => {
             console.log('Posted');
         });

@@ -1,8 +1,10 @@
+from bson import ObjectId
 from flask import jsonify
 from flask_restplus import Resource
 from app import app, api, dbQueries
 from app.models import Person, Address, Sex
 from flask_restplus import reqparse
+from flask_cors import cross_origin
 
 
 @api.route('/person', '/person/')
@@ -15,16 +17,16 @@ class PersonAll(Resource):
             return jsonify({'response': 'Sorry, an error has occurred'})
 
     def post(self):
-        # try:
-        data = api.payload
-        if Person(name=data['name'], sex=Sex(_id=data['sex']),
-                  address=[Address(number=data['number'], street=data['street'], city=data['city'],
-                                   eircode=data['eircode'])]).save():
+        try:
+            data = api.payload
+            if Person(name=data['name'], sex=Sex(_id=data['sex']),
+                      address=[Address(number=data['number'], street=data['street'], city=data['city'],
+                                       eircode=data['eircode'])]).save():
 
-            return jsonify({'status': 'Successfully added'})
+                return jsonify({'status': 'Successfully added'})
 
-        # except Exception as e:
-        return jsonify({'status': 'Error on registration, please check with your admin'})
+        except Exception as e:
+            return jsonify({'status': 'Error on registration, please check with your admin'})
         # data = api.payload
         # api_request = data['api_request']
         # return jsonify({"input": api_request})
@@ -34,7 +36,7 @@ class PersonAll(Resource):
 class PersonById(Resource):
     def get(self, person_id):
         try:
-            return jsonify(Person.objects(_id=person_id))
+            return jsonify(dbQueries.person_with_id(person_id))
         except Exception as e:
             return jsonify({'response': 'Sorry, the user id provided doesn\'t exist'})
 

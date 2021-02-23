@@ -6,8 +6,8 @@ from config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
-api = Api(app=app, title='CRUD Api', doc='/apis')
-CORS(app)
+api = Api(app=app, title='CRUD Api', doc='/api')
+CORS(app, support_credentials=True)
 db = MongoEngine(app=app)
 
 from app import routes

@@ -3,7 +3,7 @@ import { Person } from '../Person';
 import { Sex } from '../Sex';
 import { Address } from '../Address';
 
-import { FormGroup, FormControl } from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {DataService} from '../data.service';
 import {Router} from '@angular/router';
 
@@ -44,12 +44,12 @@ export class AddComponent implements OnInit {
 
     ngOnInit(): void {
         this.personForm = new FormGroup({
-            name: new FormControl(),
-            sex: new FormControl(),
-            number: new FormControl(),
-            street: new FormControl(),
-            city: new FormControl(),
-            eircode: new FormControl()
+            name: new FormControl('', Validators.required),
+            sex: new FormControl('', Validators.required),
+            number: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+            street: new FormControl('', Validators.required),
+            city: new FormControl('', Validators.required),
+            eircode: new FormControl('', Validators.required)
         });
     }
 

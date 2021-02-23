@@ -44,7 +44,7 @@
                         <input type="text" class="form-control" id="eircode" formControlName="eircode">
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="!personForm.valid">Save</button>
                     </div>
                 </form>
             </div>

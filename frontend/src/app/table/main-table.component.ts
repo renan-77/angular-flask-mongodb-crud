@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {DataService} from '../data.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-main-table',
@@ -18,9 +19,9 @@ export class MainTableComponent implements OnInit {
 
     dataSource;
 
-    constructor(private dataService: DataService) { }
+    constructor(private dataService: DataService, private router: Router) { }
 
-    ngOnInit(): void {
+    loadTable(): void {
         this.dataService.fetchData()
             .subscribe( dbData => {
                 this.dbData = dbData;
@@ -28,13 +29,19 @@ export class MainTableComponent implements OnInit {
             });
     }
 
+    ngOnInit(): void {
+        this.loadTable();
+    }
+
     deleteRecord(id: string, name: string): void {
         console.log('Inside delete function');
         if (confirm('Are you sure to delete ' + name)) {
             this.dataService.deletePerson(id);
             console.log('Deleted');
-            this.ngOnInit();
+            this.loadTable();
+
         }
+        this.loadTable();
     }
 
 }
