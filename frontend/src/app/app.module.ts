@@ -5,7 +5,6 @@ import { MatTableModule } from '@angular/material/table';
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './layout/layout.component';
 import { EditComponent } from './edit/edit.component';
-import { CardComponent } from './card/card.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DataService } from './data.service';
@@ -19,7 +18,6 @@ import { ReactiveFormsModule } from '@angular/forms';
         AppComponent,
         LayoutComponent,
         EditComponent,
-        CardComponent,
         MainTableComponent,
         AddComponent,
         SafePipe

@@ -1,8 +1,8 @@
 from bson import ObjectId
 from flask import jsonify
 from flask_restplus import Resource
-from app import app, api, dbQueries
-from app.models import Person, Address, Sex
+from app import api, dbQueries
+from app.models import Person, Sex, Address
 from flask_restplus import reqparse
 from flask_cors import cross_origin
 
@@ -43,6 +43,7 @@ class PersonById(Resource):
     # PUT
     def put(self, person_id):
         data = api.payload
+        data['sex'] = ObjectId(data['sex'])
         Person.objects(_id=person_id).update(**data)
         return jsonify(Person.objects(_id=data['_id']))
 
