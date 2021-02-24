@@ -14,5 +14,5 @@ class Address(db.EmbeddedDocument):
 
     # Declaring function for returning a full ADDRESS.
     def fullAddress(self, id):
-        address = Person.objects(_id=id).address
+        address = Person.Person.objects(_id=id).address
         return str(address.number + address.street + address.city + address.eircode)

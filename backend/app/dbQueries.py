@@ -5,7 +5,7 @@ from app.models import Person
 
 # Function to return a list of people based on aggregate.
 def person_list_aggregate():
-    return list(Person.objects.aggregate(*[
+    return list(Person.Person.objects.aggregate(*[
         {
             # Joining two collections.
             '$lookup':
@@ -47,7 +47,7 @@ def person_list_aggregate():
 
                             },
                             ' ',
-                            '$address.street', ', ', '$address.city' ]
+                            '$address.street', ', ', '$address.city']
 
                     }
                 }
@@ -56,7 +56,7 @@ def person_list_aggregate():
 
 
 def person_with_id(person_id):
-    return list(Person.objects().aggregate(*[
+    return list(Person.Person.objects().aggregate(*[
         {
             # Filtering the query by person id.
             '$match': {'_id': ObjectId(person_id)}
@@ -64,11 +64,11 @@ def person_with_id(person_id):
         {
             # Joining two collections.
             '$lookup': {
-                    'from': 'sex',
-                    'localField': 'sex',
-                    'foreignField': '_id',
-                    'as': 'sex'
-                }
+                'from': 'sex',
+                'localField': 'sex',
+                'foreignField': '_id',
+                'as': 'sex'
+            }
         },
         {
             # Unwrapping data from array.
@@ -77,7 +77,7 @@ def person_with_id(person_id):
             }
         },
         {
-            '$unwind':{
+            '$unwind': {
                 'path': '$address'
             }
         },
@@ -89,10 +89,10 @@ def person_with_id(person_id):
                 'name': 1,
                 # Declaring a field to be an object with selected values inside.
                 'sex': {
-                        # Converting ObjectID to string
-                        'id': {'$toString': '$sex._id'},
-                        'gender': '$sex.gender'
-                   },
+                    # Converting ObjectID to string
+                    'id': {'$toString': '$sex._id'},
+                    'gender': '$sex.gender'
+                },
                 # Declaring a field to be an object with selected values inside.
                 'address': {
                     # Converting ObjectID to string
@@ -104,4 +104,4 @@ def person_with_id(person_id):
                 }
             }
         }
-]))
+    ]))

@@ -28,7 +28,7 @@ export class AddComponent implements OnInit {
             number: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
             street: new FormControl('', Validators.required),
             city: new FormControl('', Validators.required),
-            eircode: new FormControl('', Validators.required)
+            eircode: new FormControl('', [Validators.required, Validators.maxLength(7)])
         });
     }
 

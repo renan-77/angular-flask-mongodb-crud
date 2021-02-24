@@ -8,9 +8,9 @@ class Person(db.Document):
     _id = ObjectIdField()
     name = db.StringField()
     # ReferenceField (Foreign Key).
-    sex = db.ReferenceField(Sex, required=True)
+    sex = db.ReferenceField(Sex.Sex, required=True)
     # List of objects.
-    address = db.ListField(db.EmbeddedDocumentField(Address))
+    address = db.ListField(db.EmbeddedDocumentField(Address.Address))
 
     # Allowing Inheritance for extra models
     meta = {'allow_inheritance': True}

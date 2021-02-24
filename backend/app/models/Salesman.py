@@ -3,9 +3,9 @@ from app.models import Person, Manager
 
 
 # Declaring SALESMAN model
-class Salesman(Person):
+class Salesman(Person.Person):
     branch = db.StringField()
-    manager = db.RefereceField(Manager, required=True)
+    manager = db.RefereceField(Manager.Manager, required=True)
     working_hours = db.FloatField()
     base_salary = db.FloatField()
     comission = db.FloatField()

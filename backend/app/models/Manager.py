@@ -1,11 +1,11 @@
 from app import db
-from app.models import Person,Salesman
+from app.models import Person, Salesman
 
 
 # Declaring ADDRESS model
-class Manager(Person):
+class Manager(Person.Person):
     # TODO resolve problem with salesman declaration for reference.
-    subordinates = db.ListField(db.ReferenceField(Salesman, required=True))
+    subordinates = db.ListField(db.ReferenceField(Salesman.Salesman, required=True))
     branch = db.StringField()
     department = db.StringField()
 

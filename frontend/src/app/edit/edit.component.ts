@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DataService} from '../data.service';
-import {MatTableDataSource} from '@angular/material/table';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -12,7 +11,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class EditComponent implements OnInit {
     id: string;
 
-    dbData;
+    personData;
 
     editForm: FormGroup;
 
@@ -26,22 +25,22 @@ export class EditComponent implements OnInit {
         this.dataService.fetchPerson(this.id)
         .subscribe( dbData => {
             // Assigning fetched data to variable.
-            this.dbData = dbData;
+            this.personData = dbData;
             // Unwinding JSON object from array.
-            this.dbData = this.dbData[0];
-            console.log(this.dbData);
+            this.personData = this.personData[0];
+            console.log(this.personData);
 
             // Creating the form for PUT.
             // Form is autofilled by values gathered from API.
             this.editForm = new FormGroup({
-                _id: new FormControl(this.dbData.id, Validators.required),
-                name: new FormControl(this.dbData.name, Validators.required),
-                sex: new FormControl(this.dbData.sex.id, Validators.required),
+                _id: new FormControl(this.personData.id, Validators.required),
+                name: new FormControl(this.personData.name, Validators.required),
+                sex: new FormControl(this.personData.sex.id, Validators.required),
                 // Validators to make sure numbers are in the field.
-                number: new FormControl(this.dbData.address.number, [Validators.required, Validators.pattern('^[0-9]*$')]),
-                street: new FormControl(this.dbData.address.street, Validators.required),
-                city: new FormControl(this.dbData.address.city, Validators.required),
-                eircode: new FormControl(this.dbData.address.eircode, Validators.required)
+                number: new FormControl(this.personData.address.number, [Validators.required, Validators.pattern('^[0-9]*$')]),
+                street: new FormControl(this.personData.address.street, Validators.required),
+                city: new FormControl(this.personData.address.city, Validators.required),
+                eircode: new FormControl(this.personData.address.eircode, [Validators.required, Validators.maxLength(7)])
             });
         });
     }
@@ -51,7 +50,7 @@ export class EditComponent implements OnInit {
         const updateData = {
             address: [{
                 // Keeping the data consistent, on change, ID stays the same.
-                _id: this.dbData.address.id,
+                _id: this.personData.address.id,
                 city: person.city,
                 number: person.number,
                 street: person.street,

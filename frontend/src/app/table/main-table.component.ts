@@ -15,7 +15,7 @@ export class MainTableComponent implements OnInit {
 
     displayedColumns: string[] = ['modification'];
 
-    dbData: [];
+    personData: [];
 
     dataSource;
 
@@ -24,8 +24,9 @@ export class MainTableComponent implements OnInit {
     loadTable(): void {
         this.dataService.fetchData()
             .subscribe( dbData => {
-                this.dbData = dbData;
-                this.dataSource = new MatTableDataSource(this.dbData);
+                this.personData = dbData;
+                console.log(this.personData)
+                this.dataSource = new MatTableDataSource(this.personData);
             });
     }
 
