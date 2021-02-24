@@ -43,6 +43,7 @@ class PersonById(Resource):
     # PUT
     def put(self, person_id):
         data = api.payload
+        data['sex'] = ObjectId(data['sex'])
         Person.objects(_id=person_id).update(**data)
         return jsonify(Person.objects(_id=data['_id']))
 

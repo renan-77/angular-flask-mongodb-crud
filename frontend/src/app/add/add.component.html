@@ -16,32 +16,50 @@
                 <form
                     [formGroup]="personForm"
                     (ngSubmit)="onSubmit(personForm.value)">
-                    <div class="form-group">
-                        <label class="text-black-50" for="name">Name</label>
-                        <input type="text" class="form-control" id="name" formControlName="name">
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="form-group">
+                                <label class="text-black-50" for="name">Name</label>
+                                <input type="text" class="form-control" id="name" formControlName="name">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="form-group">
+                                <label class="text-black-50" for="sex">Sex</label>
+                                <select class="form-control" id="sex" formControlName="sex">
+                                    <option value="602a4ce33149eb362c29655f">Female</option>
+                                    <option value="602a593d3149eb362c296561">Male</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="text-black-50" for="sex">Sex</label>
-                        <select class="form-control" id="sex" formControlName="sex">
-                            <option value="602a4ce33149eb362c29655f">Female</option>
-                            <option value="602a593d3149eb362c296561">Male</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label class="text-black-50" for="number">House Number</label>
+                                <input type="text" class="form-control" id="number" formControlName="number">
+                            </div>
+                        </div>
+                        <div class="col-10">
+                            <div class="form-group">
+                                <label class="text-black-50" for="street">Street</label>
+                                <input type="text" class="form-control" id="street" formControlName="street">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="text-black-50" for="number">House Number</label>
-                        <input type="text" class="form-control" id="number" formControlName="number">
-                    </div>
-                    <div class="form-group">
-                        <label class="text-black-50" for="street">Street</label>
-                        <input type="text" class="form-control" id="street" formControlName="street">
-                    </div>
-                    <div class="form-group">
-                        <label class="text-black-50" for="city">City</label>
-                        <input type="text" class="form-control" id="city" formControlName="city">
-                    </div>
-                    <div class="form-group">
-                        <label class="text-black-50" for="eircode">Eircode</label>
-                        <input type="text" class="form-control" id="eircode" formControlName="eircode">
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="form-group">
+                                <label class="text-black-50" for="city">City</label>
+                                <input type="text" class="form-control" id="city" formControlName="city">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-group">
+                                <label class="text-black-50" for="eircode">Eircode</label>
+                                <input type="text" class="form-control" id="eircode" formControlName="eircode">
+                            </div>
+                        </div>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn btn-primary" [disabled]="!personForm.valid">Save</button>
