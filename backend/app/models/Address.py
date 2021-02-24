@@ -3,6 +3,8 @@ from app import db
 from bson.objectid import ObjectId
 from app.models import Person
 
+
+# Declaring ADDRESS model
 class Address(db.EmbeddedDocument):
     _id = ObjectIdField(required=True, default=ObjectId, unique=True, primary_key=True)
     number = db.IntField()
@@ -10,6 +12,7 @@ class Address(db.EmbeddedDocument):
     city = db.StringField()
     eircode = db.StringField()
 
-    def fullName(self, id):
+    # Declaring function for returning a full ADDRESS.
+    def fullAddress(self, id):
         address = Person.objects(_id=id).address
-        return address.number + address.street + address.city + address.eircode
+        return str(address.number + address.street + address.city + address.eircode)

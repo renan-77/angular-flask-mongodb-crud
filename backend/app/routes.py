@@ -1,8 +1,8 @@
 from bson import ObjectId
 from flask import jsonify
 from flask_restplus import Resource
-from app import app, api, dbQueries
-from app.models import Person, Address, Sex
+from app import api, dbQueries
+from app.models import Person, Sex, Address
 from flask_restplus import reqparse
 from flask_cors import cross_origin
 

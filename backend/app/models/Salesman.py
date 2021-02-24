@@ -2,6 +2,7 @@ from app import db
 from app.models import Person, Manager
 
 
+# Declaring SALESMAN model
 class Salesman(Person):
     branch = db.StringField()
     manager = db.RefereceField(Manager, required=True)
