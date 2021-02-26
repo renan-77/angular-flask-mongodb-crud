@@ -19,9 +19,9 @@
                             (ngSubmit)="onSubmit(editForm.value)">
                             <!-- Passing hidden ID as field for the API-->
                             <div class="form-group d-none">
-                                <label class="text-black-50" for="_id">Id</label>
                                 <input type="text" class="form-control" id="_id" formControlName="_id" readonly>
                             </div>
+
                             <div class="row">
                                 <div class="col-9">
                                     <div class="form-group">
@@ -39,6 +39,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-2">
                                     <div class="form-group">
@@ -53,6 +54,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-10">
                                     <div class="form-group">
@@ -67,6 +69,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <!--Button only enables if all the data is validated-->
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary" [disabled]="!editForm.valid">Save</button>

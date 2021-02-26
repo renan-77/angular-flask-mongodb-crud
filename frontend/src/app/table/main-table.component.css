@@ -13,6 +13,32 @@ table{
     background-color: #003099;
 }
 
+.button-add-manager{
+    height: 4em;
+    width: 4em;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    text-align: center;
+    margin-right: 4.2em;
+    right: 1%;
+    bottom: 1%;
+    background-color: #FF8941;
+}
+
+.button-add-salesman{
+    height: 4em;
+    width: 4em;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    text-align: center;
+    margin-right: 8.4em;
+    right: 1%;
+    bottom: 1%;
+    background-color: #D40101;
+}
+
 .in-button-add{
     color: #f1f1f1;
     font-size: 2.3em;

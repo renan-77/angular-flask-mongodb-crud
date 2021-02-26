@@ -67,7 +67,7 @@ class PersonById(Resource):
 @api.route('/manager', '/manager/')
 class Managers(Resource):
     def get(self):
-        return jsonify(Manager.objects.all())
+        return jsonify(db_queries.get_managers())
 
     def post(self):
         data = api.payload
@@ -85,9 +85,11 @@ class Salesmen(Resource):
     def post(self):
         data = api.payload
 
+        data['manager'] = ObjectId(data['manager'])
+
         #Converting string from manager to ObjectID
         Salesman(name=data['name'], sex=Sex(_id=data['sex']),
                address=[Address(number=data['number'], street=data['street'], city=data['city'],
                 eircode=data['eircode'])], branch=data['branch'], manager=ObjectId(data['manager']),
-                 working_hours=data['working_hours'], base_salary=data['base_salary'], commission=data['commission'])\
+                 working_hours=float(data['working_hours']), base_salary=data['base_salary'], commission=data['commission'])\
             .save()

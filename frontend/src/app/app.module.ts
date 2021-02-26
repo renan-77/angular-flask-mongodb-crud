@@ -12,6 +12,8 @@ import { MainTableComponent } from './table/main-table.component';
 import { AddComponent } from './add/add.component';
 import { SafePipe } from './safe.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddManagerComponent } from './add-manager/add-manager.component';
+import { AddSalesmanComponent } from './add-salesman/add-salesman.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
         EditComponent,
         MainTableComponent,
         AddComponent,
-        SafePipe
+        SafePipe,
+        AddManagerComponent,
+        AddSalesmanComponent
     ],
     imports: [
         BrowserModule,

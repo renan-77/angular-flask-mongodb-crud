@@ -119,5 +119,16 @@ def person_with_id(person_id):
     ]))
 
 
-def find_by_id(id):
-    return person.Person.objects(_id=id)
+def get_managers():
+    return list(person.Person.objects().aggregate(*[
+        {
+            '$match': {'_cls': 'Person.Manager'}
+        },
+        {
+            '$project': {
+                '_id': 0,
+                'id': {'$toString': '$_id'},
+                'name': 1
+            }
+        }
+    ]))
