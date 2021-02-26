@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class MainTableComponent implements OnInit {
     tableDataSrc: any;
-    tableCols: string[] = ['name', 'sex', 'address', 'salesman manager', 'manager branch', 'actions'];
+    tableCols: string[] = ['name', 'sex', 'address', 'class', 'branch', 'actions'];
 
     displayedColumns: string[] = ['modification'];
 
@@ -25,7 +25,7 @@ export class MainTableComponent implements OnInit {
         this.dataService.fetchData()
             .subscribe( dbData => {
                 this.personData = dbData;
-                console.log(this.personData)
+                console.log(this.personData);
                 this.dataSource = new MatTableDataSource(this.personData);
             });
     }

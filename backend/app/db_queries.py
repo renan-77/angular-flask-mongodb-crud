@@ -50,8 +50,8 @@ def person_list_aggregate():
                     'id': {'$toString': '$_id'},
                     'name': 1,
                     'sex': '$sex.gender',
-                    'salesman manager': '$manager.name',
-                    'manager branch': '$branch',
+                    'class': '$manager.name',
+                    'branch': '$branch',
                     'address': {
                         '$concat': [
                             {
