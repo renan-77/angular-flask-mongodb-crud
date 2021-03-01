@@ -14,6 +14,8 @@ export class AddComponent implements OnInit {
 
     constructor(private dataService: DataService, private router: Router) { }
 
+    genders;
+
     onSubmit(person): void {
         console.log(person);
         console.log(this.dataService.postPerson(person));
@@ -22,6 +24,11 @@ export class AddComponent implements OnInit {
 
 
     ngOnInit(): void {
+        this.dataService.getGenders().subscribe(genders => {
+            this.genders = genders;
+            console.log(this.genders);
+        });
+
         this.personForm = new FormGroup({
             name: new FormControl('', Validators.required),
             sex: new FormControl('', Validators.required),

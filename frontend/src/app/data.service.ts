@@ -14,6 +14,8 @@ export class DataService {
 
     private readonly salesmanUrl: string = 'http://localhost:5000/salesman/';
 
+    private readonly genderUrl: string = 'http://localhost:5000/sex/';
+
     constructor(private http: HttpClient) {
     }
 
@@ -97,5 +99,13 @@ export class DataService {
         this.http.post(this.managerUrl, person).subscribe(data => {
             console.log('Posted');
         });
+    }
+
+    /**
+     * Returns a observable with all the managers in Person collection.
+     * (Used for register of new salesman).
+     */
+    getGenders(): Observable<any>{
+        return this.http.get(this.genderUrl);
     }
 }

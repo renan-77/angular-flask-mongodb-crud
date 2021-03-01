@@ -15,9 +15,16 @@ export class EditComponent implements OnInit {
 
     editForm: FormGroup;
 
+    genders;
+
     constructor(private route: ActivatedRoute, private dataService: DataService, private router: Router) { }
 
     ngOnInit(): void {
+        this.dataService.getGenders().subscribe(genders => {
+            this.genders = genders;
+            console.log(this.genders);
+        });
+
         this.id = this.route.snapshot.paramMap.get('id');
         // console.log(this.id);
 

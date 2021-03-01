@@ -12,6 +12,8 @@ export class AddManagerComponent implements OnInit {
 
     managerForm: FormGroup;
 
+    genders;
+
     constructor(private dataService: DataService, private router: Router) { }
 
     onSubmit(person): void {
@@ -22,6 +24,11 @@ export class AddManagerComponent implements OnInit {
 
 
     ngOnInit(): void {
+        this.dataService.getGenders().subscribe(genders => {
+            this.genders = genders;
+            console.log(this.genders);
+        });
+
         this.managerForm = new FormGroup({
             name: new FormControl('', Validators.required),
             sex: new FormControl('', Validators.required),

@@ -27,8 +27,7 @@
                             <div class="form-group">
                                 <label class="text-black-50" for="sex">Sex</label>
                                 <select class="form-control" id="sex" formControlName="sex">
-                                    <option value="602a4ce33149eb362c29655f">Female</option>
-                                    <option value="602a593d3149eb362c296561">Male</option>
+                                    <option *ngFor="let gender of genders" value="{{gender.id}}">{{gender.gender}}</option>
                                 </select>
                             </div>
                         </div>

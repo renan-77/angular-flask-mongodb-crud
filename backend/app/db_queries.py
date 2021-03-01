@@ -1,6 +1,6 @@
 from bson import ObjectId
 
-from app.models import person
+from app.models import person, sex
 
 
 # Function to return a list of people based on aggregate.
@@ -130,6 +130,17 @@ def get_managers():
                 '_id': 0,
                 'id': {'$toString': '$_id'},
                 'name': 1
+            }
+        }
+    ]))
+
+def get_genders():
+    return list(sex.Sex.objects().aggregate(*[
+        {
+            '$project': {
+                '_id': 0,
+                'id': {'$toString': "$_id"},
+                'gender': 1
             }
         }
     ]))

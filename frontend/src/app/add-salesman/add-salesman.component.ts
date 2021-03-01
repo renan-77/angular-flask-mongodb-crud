@@ -13,6 +13,8 @@ export class AddSalesmanComponent implements OnInit {
 
     managers;
 
+    genders;
+
     constructor(private dataService: DataService, private router: Router) { }
 
     onSubmit(person): void {
@@ -25,6 +27,11 @@ export class AddSalesmanComponent implements OnInit {
         this.dataService.getManagers().subscribe(managers => {
             this.managers = managers;
             console.log(this.managers);
+        });
+
+        this.dataService.getGenders().subscribe(genders => {
+            this.genders = genders;
+            console.log(this.genders);
         });
 
         this.salesmanForm = new FormGroup({
