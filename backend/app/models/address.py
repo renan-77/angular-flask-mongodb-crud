@@ -1,7 +1,7 @@
 from mongoengine import ObjectIdField
 from app import db
 from bson.objectid import ObjectId
-from app.models import abstractperson
+from app.models import person
 
 
 # Declaring ADDRESS model
@@ -14,5 +14,5 @@ class Address(db.EmbeddedDocument):
 
     # Declaring function for returning a full ADDRESS.
     def fullAddress(self, id):
-        address = abstractperson.AbstractPerson.objects(_id=id).address
+        address = person.Person.objects(_id=id).address
         return str(address.number + address.street + address.city + address.eircode)

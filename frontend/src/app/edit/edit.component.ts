@@ -22,7 +22,7 @@ export class EditComponent implements OnInit {
         // console.log(this.id);
 
         // Gathering DATA from API.
-        this.dataService.fetchPerson(this.id)
+        this.dataService.getPerson(this.id)
         .subscribe( dbData => {
             // Assigning fetched data to variable.
             this.personData = dbData;
@@ -63,7 +63,7 @@ export class EditComponent implements OnInit {
 
         console.log(updateData);
         // Calling PUT.
-        console.log(this.dataService.updatePerson(updateData));
+        console.log(this.dataService.putPerson(updateData));
         // Redirecting to home page.
         this.router.navigate(['/home']);
     }

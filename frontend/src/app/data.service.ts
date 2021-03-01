@@ -17,16 +17,26 @@ export class DataService {
     constructor(private http: HttpClient) {
     }
 
-    fetchData(): Observable<any> {
+    /**
+     * Returns a observable with all the records in Person collection.
+     */
+    getPeople(): Observable<any> {
         return this.http.get(this.personUrl);
     }
 
-    fetchPerson(id: string): Observable<any>{
+    /**
+     * Returns a observable with the specified record in Person collection.
+     */
+    getPerson(id: string): Observable<any>{
         const endPoints = `${id}`;
         console.log(this.personUrl + endPoints);
         return this.http.get(this.personUrl + endPoints);
     }
 
+    /**
+     * Deletes a specific record in Person collection.
+     * @param id - ID of the user.
+     */
     deletePerson(id: string): void{
         const endPoints = `${id}`;
         console.log(this.personUrl + endPoints);
@@ -35,6 +45,10 @@ export class DataService {
         });
     }
 
+    /**
+     * Creates new register of PERSON on the database.
+     * @param person - A person JSON object from the form.
+     */
     postPerson(person): void{
         console.log('In Person Post');
         this.http.post(this.personUrl, person).subscribe(data => {
@@ -42,7 +56,11 @@ export class DataService {
         });
     }
 
-    updatePerson(person): void{
+    /**
+     *  Updates PERSON on the database with provided data.
+     * @param person - A person JSON object from the form.
+     */
+    putPerson(person): void{
         const endPoints = `${person._id}`;
         console.log('In Person Post');
         console.log(person);
@@ -51,10 +69,18 @@ export class DataService {
         });
     }
 
-    getSalesMan(): Observable<any>{
+    /**
+     * Returns a observable with all the managers in Person collection.
+     * (Used for register of new salesman).
+     */
+    getManagers(): Observable<any>{
         return this.http.get(this.managerUrl);
     }
 
+    /**
+     *  Creates new register of SALESMAN on the database.
+     * @param person - A person JSON object from the form.
+     */
     postSalesman(person): void{
         console.log('In Salesman Post');
         this.http.post(this.salesmanUrl, person).subscribe(data => {
@@ -62,11 +88,14 @@ export class DataService {
         });
     }
 
+    /**
+     *  Creates new register of MANAGER on the database.
+     * @param person - A person JSON object from the form.
+     */
     postManager(person): void{
         console.log('In Manager Post');
         this.http.post(this.managerUrl, person).subscribe(data => {
             console.log('Posted');
         });
     }
-
 }

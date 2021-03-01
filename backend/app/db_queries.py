@@ -47,6 +47,7 @@ def person_list_aggregate():
             '$project':
                 {
                     '_id': 0,
+                    '_cls': 1,
                     'id': {'$toString': '$_id'},
                     'name': 1,
                     'sex': '$sex.gender',

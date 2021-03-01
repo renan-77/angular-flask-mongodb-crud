@@ -22,7 +22,7 @@ export class AddSalesmanComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.dataService.getSalesMan().subscribe(managers => {
+        this.dataService.getManagers().subscribe(managers => {
             this.managers = managers;
             console.log(this.managers);
         });

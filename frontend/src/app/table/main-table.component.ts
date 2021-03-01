@@ -11,9 +11,8 @@ import {Router} from '@angular/router';
 })
 export class MainTableComponent implements OnInit {
     tableDataSrc: any;
-    tableCols: string[] = ['name', 'sex', 'address', 'class', 'branch', 'actions'];
 
-    displayedColumns: string[] = ['modification'];
+    tableCols: string[] = ['name', 'sex', 'address', 'class', 'branch', 'actions'];
 
     personData: [];
 
@@ -21,8 +20,9 @@ export class MainTableComponent implements OnInit {
 
     constructor(private dataService: DataService, private router: Router) { }
 
+    // Function to be called to refresh the table (loads the contents of the table).
     loadTable(): void {
-        this.dataService.fetchData()
+        this.dataService.getPeople()
             .subscribe( dbData => {
                 this.personData = dbData;
                 console.log(this.personData);
@@ -36,13 +36,12 @@ export class MainTableComponent implements OnInit {
 
     deleteRecord(id: string, name: string): void {
         console.log('Inside delete function');
+        // Confirm Box for deleting record.
         if (confirm('Are you sure to delete ' + name)) {
             this.dataService.deletePerson(id);
             console.log('Deleted');
             this.loadTable();
-
         }
         this.loadTable();
     }
-
 }
