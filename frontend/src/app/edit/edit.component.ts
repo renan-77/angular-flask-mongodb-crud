@@ -63,7 +63,7 @@ export class EditComponent implements OnInit {
                 street: person.street,
                 eircode: person.eircode
             }],
-            _id: person._id,
+            _id: this.personData.id,
             name: person.name,
             sex: person.sex
         };

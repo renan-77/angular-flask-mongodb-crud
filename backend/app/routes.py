@@ -24,10 +24,10 @@ class PersonAll(Resource):
                       address=[Address(number=data['number'], street=data['street'], city=data['city'],
                                        eircode=data['eircode'])]).save():
 
-                return jsonify({'status': 'Successfully added'})
+                return jsonify({'response': 'Successfully added'})
 
         except:
-            return jsonify({'status': 'Error on registration, please check with your admin'})
+            return jsonify({'response': 'Error on registration, please check with your admin'})
 
 
 @api.route('/person/<person_id>')
@@ -75,7 +75,7 @@ class Managers(Resource):
 @api.route('/salesman', '/salesman/')
 class Salesmen(Resource):
     def get(self):
-        return jsonify(Salesmen.objects.all())
+        return jsonify(db_queries.get_salesmen())
 
     def post(self):
         data = api.payload

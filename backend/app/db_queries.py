@@ -16,15 +16,6 @@ def person_list_aggregate():
                 }
         },
         {
-            '$lookup':
-                    {
-                        'from': 'person',
-                        'localField': 'manager',
-                        'foreignField': '_id',
-                        'as': 'manager'
-                    }
-        },
-        {
             '$unwind':
                 {
                     'path': '$sex'
@@ -37,13 +28,6 @@ def person_list_aggregate():
                 }
         },
         {
-            '$unwind':
-                {
-                    'path': "$manager",
-                    'preserveNullAndEmptyArrays': True
-                }
-        },
-        {
             '$project':
                 {
                     '_id': 0,
@@ -51,7 +35,6 @@ def person_list_aggregate():
                     'id': {'$toString': '$_id'},
                     'name': 1,
                     'sex': '$sex.gender',
-                    'class': '$manager.name',
                     'branch': '$branch',
                     'address': {
                         '$concat': [
@@ -60,7 +43,7 @@ def person_list_aggregate():
 
                             },
                             ' ',
-                            '$address.street', ', ', '$address.city' ]
+                            '$address.street', ', ', '$address.city']
 
                     }
                 }
@@ -124,6 +107,20 @@ def get_managers():
     return list(person.Person.objects().aggregate(*[
         {
             '$match': {'_cls': 'Person.Manager'}
+        },
+        {
+            '$project': {
+                '_id': 0,
+                'id': {'$toString': '$_id'},
+                'name': 1
+            }
+        }
+    ]))
+
+def get_salesmen():
+    return list(person.Person.objects().aggregate(*[
+        {
+            '$match': {'_cls': 'Person.Salesman'}
         },
         {
             '$project': {
