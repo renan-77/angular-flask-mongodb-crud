@@ -8,6 +8,7 @@ from app.models.manager import Manager
 from app.models.salesman import Salesman
 from app.models.person import Person
 
+
 @api.route('/person', '/person/')
 class PersonAll(Resource):
     def get(self):
@@ -20,11 +21,11 @@ class PersonAll(Resource):
     def post(self):
         try:
             data = api.payload
-            if Person(name=data['name'], sex=Sex(_id=data['sex']),
-                      address=[Address(number=data['number'], street=data['street'], city=data['city'],
-                                       eircode=data['eircode'])]).save():
+            Person(name=data['name'], sex=Sex(_id=data['sex']),
+                  address=[Address(number=data['number'], street=data['street'], city=data['city'],
+                                   eircode=data['eircode'])]).save()
 
-                return jsonify({'response': 'Successfully added'})
+            return jsonify({'response': 'Successfully added'})
 
         except:
             return jsonify({'response': 'Error on registration, please check with your admin'})
