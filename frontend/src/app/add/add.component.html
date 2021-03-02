@@ -11,64 +11,244 @@
 </div>
 <div class="container-fluid bottom-container mt-5">
     <div class="container bottom-content">
-        <div class="row">
-            <div class="col-12">
-                <form
-                    [formGroup]="personForm"
-                    (ngSubmit)="onSubmit(personForm.value)">
-                    <div class="row">
-                        <div class="col-9">
-                            <div class="form-group">
-                                <label class="text-black-50" for="name">Name</label>
-                                <input type="text" class="form-control" id="name" formControlName="name">
-                            </div>
-                        </div>
-                        <div class="col-3">
-                            <div class="form-group">
-                                <label class="text-black-50" for="sex">Sex</label>
-                                <select class="form-control" id="sex" formControlName="sex">
-                                    <option *ngFor="let gender of genders" value="{{gender.id}}">{{gender.gender}}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-2">
-                            <div class="form-group">
-                                <label class="text-black-50" for="number">House Number</label>
-                                <input type="text" class="form-control" id="number" formControlName="number">
+        <!--Checking if form is PERSON-->
+        <div class="add-form" *ngIf="whichForm == 'person'">
+            <div class="row">
+                <div class="col-12">
+                    <form
+                        [formGroup]="personForm"
+                        (ngSubmit)="onSubmit(personForm.value)">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" formControlName="name">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="sex">Sex</label>
+                                    <select class="form-control" id="sex" formControlName="sex">
+                                        <option *ngFor="let gender of genders" value="{{gender.id}}">{{gender.gender}}</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-10">
-                            <div class="form-group">
-                                <label class="text-black-50" for="street">Street</label>
-                                <input type="text" class="form-control" id="street" formControlName="street">
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-10">
-                            <div class="form-group">
-                                <label class="text-black-50" for="city">City</label>
-                                <input type="text" class="form-control" id="city" formControlName="city">
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="number">House Number</label>
+                                    <input type="text" class="form-control" id="number" formControlName="number">
+                                </div>
+                            </div>
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="street">Street</label>
+                                    <input type="text" class="form-control" id="street" formControlName="street">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-2">
-                            <div class="form-group">
-                                <label class="text-black-50" for="eircode">Eircode</label>
-                                <input type="text" class="form-control" id="eircode" formControlName="eircode" maxlength="7">
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-primary" [disabled]="!personForm.valid">Save</button>
-                    </div>
-                </form>
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="city">City</label>
+                                    <input type="text" class="form-control" id="city" formControlName="city">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="eircode">Eircode</label>
+                                    <input type="text" class="form-control" id="eircode" formControlName="eircode" maxlength="7">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary" [disabled]="!personForm.valid">Save</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+
+        <!--Checking if form is MANAGER-->
+        <div class="add-manager-form" *ngIf="whichForm == 'manager'">
+            <div class="row">
+                <div class="col-12">
+                    <form
+                        [formGroup]="managerForm"
+                        (ngSubmit)="onSubmit(managerForm.value)">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="manager_name">Name</label>
+                                    <input type="text" class="form-control" id="manager_name" formControlName="name">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="manager_sex">Sex</label>
+                                    <select class="form-control" id="manager_sex" formControlName="sex">
+                                        <option *ngFor="let gender of genders" value="{{gender.id}}">{{gender.gender}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="manager_number">House Number</label>
+                                    <input type="text" class="form-control" id="manager_number" formControlName="number">
+                                </div>
+                            </div>
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="manager_street">Street</label>
+                                    <input type="text" class="form-control" id="manager_street" formControlName="street">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="manager_city">City</label>
+                                    <input type="text" class="form-control" id="manager_city" formControlName="city">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="manager_eircode">Eircode</label>
+                                    <input type="text" class="form-control" id="manager_eircode" formControlName="eircode" maxlength="7">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="manager_branch">Branch</label>
+                                    <input type="text" class="form-control" id="manager_branch" formControlName="branch">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="manager_department">Department</label>
+                                    <input type="text" class="form-control" id="manager_department" formControlName="department">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary" [disabled]="!managerForm.valid">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--Checking if form is SALESMAN-->
+        <div class="add-salesman-form" *ngIf="whichForm == 'salesman'">
+            <div class="row">
+                <div class="col-12">
+                    <form
+                        [formGroup]="salesmanForm"
+                        (ngSubmit)="onSubmit(salesmanForm.value)">
+                        <div class="form-group d-none">
+                            <input type="number" class="form-control" id="working_hours" formControlName="working_hours"
+                                    readonly>
+                        </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="salesman_name">Name</label>
+                                    <input type="text" class="form-control" id="salesman_name" formControlName="name">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="salesman_sex">Sex</label>
+                                    <select class="form-control" id="salesman_sex" formControlName="sex">
+                                        <option *ngFor="let gender of genders" value="{{gender.id}}">{{gender.gender}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="salesman_number">House Number</label>
+                                    <input type="text" class="form-control" id="salesman_number" formControlName="number">
+                                </div>
+                            </div>
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="salesman_street">Street</label>
+                                    <input type="text" class="form-control" id="salesman_street" formControlName="street">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="salesman_city">City</label>
+                                    <input type="text" class="form-control" id="salesman_city" formControlName="city">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="salesman_eircode">Eircode</label>
+                                    <input type="text" class="form-control" id="salesman_eircode" formControlName="eircode" maxlength="7">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="manager">Manager</label>
+                                    <select class="form-control" id="manager" formControlName="manager">
+                                        <option *ngFor="let manager of managers" value="{{manager.id}}">{{manager.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="salesman_branch">Branch</label>
+                                    <input type="text" class="form-control" id="salesman_branch" formControlName="branch">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="base_salary">Base Salary</label>
+                                    <input type="number" class="form-control" id="base_salary" formControlName="base_salary">
+                                </div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="text-black-50" for="commission">Commission</label>
+                                    <input type="number" class="form-control" id="commission" formControlName="commission">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary" [disabled]="!salesmanForm.valid">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 </body>
